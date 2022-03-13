@@ -67,6 +67,6 @@ jobs:
         uses: Azure/data-factory-deploy-action@v1.2.0
         with:
           resourceGroupName: AzurePolicyTest-RG
-          dataFactoryName: GithubEnterpriseTestADF-org
+          dataFactoryName: GithubEnterpriseTestADF-UAT
           armTemplateFile: ./armTemplate/ARMTemplateForFactory.json
           armTemplateParametersFile: ./armTemplate/ARMTemplateParametersForFactory.json
