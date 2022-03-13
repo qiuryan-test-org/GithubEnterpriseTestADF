@@ -42,3 +42,11 @@ jobs:
             path: ./ # optional, default is ./
             # Data Factory resource ID
             id: /subscriptions/cab35af7-0441-48ff-9577-8e6ec623c9e5/resourceGroups/AzurePolicyTest-RG/providers/Microsoft.DataFactory/factories/GithubEnterpriseTestADF-org
+
+      - name: data-factory-export
+        uses: Azure/data-factory-export-action@v1.1.0
+        with:
+          # Directory that contains the Data Factory resources
+          path: ./
+          # Data Factory resource ID
+          id: /subscriptions/cab35af7-0441-48ff-9577-8e6ec623c9e5/resourceGroups/AzurePolicyTest-RG/providers/Microsoft.DataFactory/factories/GithubEnterpriseTestADF-org
