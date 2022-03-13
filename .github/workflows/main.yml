@@ -56,3 +56,17 @@ jobs:
           name: my-artifact
           path: ${{ steps.export.outputs.arm-template-directory }}
           if-no-files-found: error
+
+      - name: Login via Az module
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          enable-AzPSSession: true 
+
+      - name: Deploy resources
+        uses: Azure/data-factory-deploy-action@v1.2.0
+        with:
+          resourceGroupName: AzurePolicyTest-RG
+          dataFactoryName: GithubEnterpriseTestADF-org
+          armTemplateFile: ./armTemplate/ARMTemplateForFactory.json
+          armTemplateParametersFile: ./armTemplate/ARMTemplateParametersForFactory.json
