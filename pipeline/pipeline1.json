@@ -22,7 +22,11 @@
 						]
 					}
 				],
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"message": "error message",
+					"errorCode": "E1000"
+				}
 			}
 		],
 		"annotations": []
