@@ -39,14 +39,20 @@ jobs:
         uses: Azure/data-factory-validate-action@v1.1.5
         with:
             # Directory that contains all Data Factory resources
-            path: ./ # optional, default is ./
+            path: ./
             # Data Factory resource ID
             id: /subscriptions/cab35af7-0441-48ff-9577-8e6ec623c9e5/resourceGroups/AzurePolicyTest-RG/providers/Microsoft.DataFactory/factories/GithubEnterpriseTestADF-org
 
-      - name: data-factory-export
+      - name: Export ARM Template
+        id: export
         uses: Azure/data-factory-export-action@v1.1.0
         with:
-          # Directory that contains the Data Factory resources
           path: ./
-          # Data Factory resource ID
           id: /subscriptions/cab35af7-0441-48ff-9577-8e6ec623c9e5/resourceGroups/AzurePolicyTest-RG/providers/Microsoft.DataFactory/factories/GithubEnterpriseTestADF-org
+
+      - name: Publish ARM template
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: ${{ steps.export.outputs.arm-template-directory }}
+          if-no-files-found: error
